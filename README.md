@@ -15,7 +15,7 @@ Arabic-first learning platform for Al-Shafie Academy's Palestinian Tawjihi Engli
 
 Keep the source repository private and connect `QosaiGm/al-shafie-academy` to Netlify using **Add new project → Import an existing project → GitHub**. The repository is under a personal account, so Netlify's Free plan supports connecting it. Netlify's current Free plan has a hard monthly usage limit; check the current plan and remaining credits in its dashboard before inviting students.
 
-`netlify.toml` sets the build command to `pnpm build` and publishes `dist`. Netlify installs dependencies from `pnpm-lock.yaml`; `package.json` pins pnpm so the build uses the lockfile's expected package manager. Add the build environment variables `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the Netlify site settings using the matching values from the local `.env` file. Each push to `main` then rebuilds and deploys the site to its HTTPS `*.netlify.app` address. A custom domain is optional.
+`netlify.toml` checks the required Supabase settings before building, runs `pnpm build` and publishes `dist`. Netlify installs dependencies from `pnpm-lock.yaml`; `package.json` pins pnpm so the build uses the lockfile's expected package manager. In the Netlify site settings, add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` using the matching values from the local `.env` file, then deploy. Each push to `main` rebuilds and deploys the site to its HTTPS `*.netlify.app` address. A custom domain is optional.
 
 ## Finish site configuration
 
