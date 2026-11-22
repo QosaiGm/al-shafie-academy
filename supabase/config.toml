@@ -1,0 +1,5 @@
+project_id = "prcasfkowelbbtfclexc"
+
+[functions.bunny-playback]
+# The function validates paid requests itself so public preview lessons can be played anonymously.
+verify_jwt = false

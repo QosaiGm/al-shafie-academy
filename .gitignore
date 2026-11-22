@@ -1,0 +1,10 @@
+node_modules/
+dist/
+work/.supabase-home/
+work/
+.supabase/
+supabase/.temp/
+.env
+.env.*
+!.env.example
+.DS_Store
