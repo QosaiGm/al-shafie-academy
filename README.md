@@ -11,31 +11,22 @@ Arabic-first learning platform for Al-Shafie Academy's Palestinian Tawjihi Engli
 
 `pnpm build` runs the TypeScript check and creates the production site in `dist/`.
 
-## Publish with Cloudflare Pages
+## Publish with GitHub Pages
 
-The source repository should remain private. Create a private GitHub repository, push this project, then connect that repository in Cloudflare Pages using **Workers & Pages → Create application → Pages → Connect to Git**.
+The `.github/workflows/deploy.yml` workflow builds the site and publishes `dist` whenever `main` changes. In the private GitHub repository, add Actions secrets named `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`, then set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The GitHub account plan must support Pages for private repositories; GitHub Free requires a public repository for Pages. Keep this repository private unless you choose to make it public.
 
-Set the Pages build configuration:
+The site URL will be `https://qosaigm.github.io/al-shafie-academy/`. The project uses hash-based routing and a relative Vite asset base, so it can run from this repository path.
 
-- Framework preset: **Vite**
-- Root directory: `/`
-- Build command: `pnpm install --frozen-lockfile && pnpm build`
-- Build output directory: `dist`
-- Environment variable `NODE_VERSION`: `20`
-- Environment variables `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`: the Supabase project URL and publishable anon key
+## Finish site configuration
 
-Use the HTTPS `*.pages.dev` address first. Add a custom domain in Cloudflare later if you have one. Each push to `main` then builds and publishes the site automatically. Do not enable GitHub Pages for this repository.
+After the first deployment, configure each site URL before inviting students:
 
-## Finish production configuration
-
-After the first Pages deployment, configure each production URL before inviting students:
-
-1. In Supabase Authentication → URL Configuration, set the deployed HTTPS origin as the Site URL and add the deployed origin and callback paths to Redirect URLs. Keep localhost entries only for development.
+1. In Supabase Authentication → URL Configuration, set the deployed HTTPS URL as the Site URL and add `https://qosaigm.github.io/al-shafie-academy/**` to Redirect URLs. Keep localhost entries only for development.
 2. In Google Cloud Console, add the deployed HTTPS origin to the OAuth client's authorized JavaScript origins. Keep the Supabase callback URL as its authorized redirect URI.
-3. Set the production site URL in Bunny Stream's allowed referrers for the video library.
+3. Set `qosaigm.github.io` as an allowed referrer in Bunny Stream for the video library.
 4. Confirm the Supabase database has the current migrations, especially `202611200002_semester_installments.sql` and `202611200003_full_semester_payment.sql`. The latter supports either paying the whole semester at once or paying it in three installments. Each semester is subscribed to separately.
 5. Confirm the required Supabase Edge Functions are deployed and their private Bunny credentials are configured in Supabase Function Secrets. Never put the Bunny token key, Supabase service-role key, OAuth client secret or SMTP credentials in `VITE_*` variables.
-6. Run a live acceptance pass on the production URL: email and Google sign-in, first-device approval and teacher reset, both semester payment options, receipt submission and teacher review, second-semester access separation, the three-day installment grace period, lesson playback, exams, library, announcements and account deletion controls.
+6. Run a live acceptance pass on the deployed URL: email and Google sign-in, first-device approval and teacher reset, test receipt submission and teacher review, second-semester access separation, installment handling, lesson playback, exams, library, announcements and account deletion controls.
 
 The frontend Supabase anon key is a public client key and will be present in the built JavaScript. Database access must remain protected by the configured Supabase Row Level Security policies and Edge Functions.
 
