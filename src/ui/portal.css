@@ -401,3 +401,80 @@ html[data-theme="dark"] .announcement-admin-item b{color:#edf6f6}html[data-theme
   .utility-user>span:first-child{max-width:80px}
   .app-with-sidebar.sidebar-hidden .authenticated-main,html[lang="en"] .app-with-sidebar.sidebar-hidden .authenticated-main{margin:0;padding:0 18px 28px}
 }
+
+/* Phone layout: keep the fixed navigation compact and let content use the viewport. */
+@media(max-width:760px){
+  html,body{width:100%;max-width:100%;overflow-x:clip}
+  .app,.app-main,.authenticated-main,.page-main,.admin-section{min-width:0;max-width:100%}
+  .authenticated-main{margin-right:56px;margin-left:0;padding:0 12px 26px}
+  .app-sidebar{width:56px;padding:11px 4px}
+  .sidebar-brand{height:56px}
+  .sidebar-brand b,.sidebar-brand small,.side-link span{display:none}
+  .side-link,.side-logout{justify-content:center;padding:0}
+  .side-logout{font-size:0}
+  html[lang="en"] .app-sidebar{right:auto;left:0}
+  html[lang="en"] .authenticated-main{margin-left:56px;margin-right:0;padding:0 12px 26px}
+  .portal-banner{gap:12px;padding:16px}
+  .portal-banner h1{font-size:clamp(18px,5vw,23px);overflow-wrap:anywhere}
+  .portal-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .portal-metrics article{min-width:0;height:auto;min-height:76px;padding:10px}
+  .portal-metrics span,.portal-metrics small{font-size:9px}
+  .portal-metrics b{font-size:20px}
+  .portal-account-grid,.student-data-grid{grid-template-columns:1fr}
+  .admin-section,.dashboard-panel{min-width:0;padding:13px}
+  .teacher-dashboard-nav{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+  .teacher-tab{flex:0 0 auto}
+  .teacher-section-head,.section-heading{gap:10px;flex-wrap:wrap}
+  .student-resource-card,.exam-admin-row{min-width:0}
+  .course-detail-layout,.course-form,.teacher-create-exam,.library-upload-form{grid-template-columns:minmax(0,1fr)}
+  .course-detail-layout>*{min-width:0}
+  .course-detail-banner{height:auto;min-height:190px;padding:18px}
+  .course-art-copy{max-width:64%;min-width:0}
+  .course-art-copy h1{font-size:clamp(20px,6vw,32px);overflow-wrap:anywhere}
+  .payment-method-grid{grid-template-columns:1fr}
+  .payment-method-card{grid-template-columns:38px minmax(0,1fr) 18px;min-height:68px;padding:9px 11px;gap:5px 9px}
+  .payment-method-card .payment-method-icon{width:34px;height:34px}
+  .payment-method-card>b{font-size:11px}
+  .payment-method-card>small{font-size:9px}
+  .checkout-form,.checkout-form>*{min-width:0}
+  .receipt-dropzone input{width:100%;max-width:100%;font-size:11px}
+  .checkout-wallet,.wallet-detail-row{min-width:0}
+  .wallet-detail-row b{overflow-wrap:anywhere}
+  .payment-contact-grid{grid-template-columns:minmax(0,1fr)}
+  .course-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .course-card,.course-meta,.package-panel{min-width:0}
+  img,video,iframe{max-width:100%}
+}
+
+@media(max-width:520px){
+  .authenticated-main{padding-inline:9px}
+  html[lang="en"] .authenticated-main{padding-inline:9px}
+  .utility-bar{gap:6px}
+  .utility-menu-toggle{width:32px;height:32px}
+  .utility-search{height:32px;padding-inline:9px;font-size:9px}
+  .utility-user{gap:5px}
+  .utility-user>span:first-child{max-width:64px;font-size:9px}
+  .utility-user .avatar{width:27px;height:27px}
+  .portal-dashboard{gap:9px;padding-top:6px}
+  .portal-metrics{gap:7px}
+  .portal-metrics article{min-height:70px;padding:8px}
+  .portal-metrics span,.portal-metrics small{font-size:8px}
+  .portal-progress,.portal-subjects,.portal-small-panel,.portal-account{padding:12px}
+  .teacher-dashboard-nav{margin:11px 0;padding:6px}
+  .teacher-tab{padding:7px 9px;font-size:9px}
+  .admin-section{padding:11px;margin-top:12px}
+  .checkout-scrim{padding:0;place-items:stretch}
+  .checkout-modal{width:100%;height:100vh;height:100dvh;max-height:100vh;max-height:100dvh;border-radius:0}
+  .checkout-header{min-height:76px;padding:10px 16px}
+  .checkout-form{padding:12px 14px calc(16px + env(safe-area-inset-bottom))}
+  .checkout-step-title b{font-size:11px}
+  .checkout-step-title small{font-size:9px}
+  .payment-method-card>b{font-size:12px}
+  .payment-method-card>small{font-size:10px}
+  .checkout-submit{min-height:46px}
+  .auth-wrap{min-height:100vh;min-height:100dvh;padding:16px}
+  .auth-card{width:min(100%,440px);max-width:100%}
+  .course-grid{grid-template-columns:minmax(0,1fr)}
+  .subscription-wall{margin:10px;padding:20px}
+}
+
